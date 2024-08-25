@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div class="employee-table-container">
+    <div class="filter-container">
+      <div class="input-wrapper">
+        <input type="text" id="filterInput" placeholder="search" (keyup)="applyFilter($event)">
+        <i class="material-icons search-icon">search</i>
+      </div>
+      <button class="add-button" (click)="openAddEmployeeModal()">Add</button>
+    </div>
+  
+    <div class="modal" *ngIf="isModalOpen">
+      <div class="modal-content">
+        <span class="close" (click)="closeAddEmployeeModal()">&times;</span>
+        <h2 class="title">Add Employee</h2>
+        <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  
+        <form (ngSubmit)="submitAddEmployee()">
+          <label>
+            Last Name:
+            <input type="text" [(ngModel)]="newEmployee.lastName" name="lastName" required>
+          </label>
+          <br>
+          <label>
+            First Name:
+            <input type="text" [(ngModel)]="newEmployee.firstName" name="firstName" required>
+          </label>
+          <br>
+          <label>
+            Age:
+            <input type="number" [(ngModel)]="newEmployee.age" name="age" required>
+          </label>
+          <br>
+          <label>
+            Salary:
+            <input type="number" [(ngModel)]="newEmployee.salary" name="salary" required>
+          </label>
+          <br>
+          <div class="button-container">
+            <button type="submit">Add Employee</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <table>
+        <thead>
+          <tr>
+            <th (click)="sort('firstName')">First Name <span *ngIf="sortColumn === 'firstName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span></th>
+            <th (click)="sort('lastName')">Last Name <span *ngIf="sortColumn === 'lastName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span></th>
+            <th (click)="sort('age')">Age <span *ngIf="sortColumn === 'age'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span></th>
+            <th (click)="sort('salary')">Salary <span *ngIf="sortColumn === 'salary'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span></th>
+             <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of filteredEmployees , let i = index">
+            <td>{{ employee.firstName }}</td>
+            <td>{{ employee.lastName }}</td>
+            <td>{{ employee.age }}</td>
+            <td>{{ employee.salary }}</td>
+            <td>
+              <button class="icon-button" (click)="deleteEmployee(i)">
+               <i class="material-icons">delete</i>
+                 </button>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+      
+  
+    <div class="pagination">
+      <div class="prev-next-buttons">
+        <button (click)="changePage(-1)" [disabled]="currentPage === 1">Previous</button>
+        <span class="page-numbers">
+          <button *ngFor="let page of pageNumbers" 
+                  (click)="goToPage(page)" 
+                  [class.active]="page === currentPage">
+            {{ page }}
+          </button>
+        </span>
+        <button (click)="changePage(1)" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+    </div>
+  </div>
+  

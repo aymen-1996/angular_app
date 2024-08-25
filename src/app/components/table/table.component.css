@@ -1,0 +1,312 @@
+.employee-table-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 1200px;
+    margin: auto; 
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(82, 79, 79, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.filter-container {
+    margin-bottom: 16px;
+    display: flex; 
+    align-items: center;
+    width: 100%; 
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+    margin-right: 16px;
+}
+
+#filterInput {
+    width: calc(100% - 40px); 
+    padding: 10px 40px 10px 10px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #999;
+    pointer-events: none; 
+}
+
+#filterInput:focus {
+    border-color: #f44336;
+    outline: none;
+}
+
+.add-button {
+    padding: 10px 16px;
+    background-color: #fc655a; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #ee3a37; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+thead th {
+    background-color: #eb8888;
+    color: #f7f1f1;
+    font-weight: bold;
+    text-align: left;
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #fcbebe;
+}
+
+button, .icon-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.icon-button {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.icon-button i {
+    font-size: 25px;
+    color: #f07d74;
+    text-align: center;
+}
+
+
+.pagination {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    padding-top: 16px;
+}
+
+.pagination .prev-next-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.pagination .prev-next-buttons button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pagination .prev-next-buttons button:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+}
+
+.pagination .prev-next-buttons button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 4px;
+}
+
+.page-numbers button {
+    background-color: #e0e0e0;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.page-numbers button:hover {
+    background-color: #e68888;
+    transform: scale(1.05);
+}
+
+.page-numbers button.active {
+    background-color: #f07676;
+    color: white;
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+
+
+
+/* Popup */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.title{
+    text-align: center;
+}
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px; 
+    color: #333; 
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #f44336; 
+}
+
+.add-button {
+    padding: 12px 20px;
+    background-color: #f44336; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-button:hover {
+    background-color: #e53935; 
+    transform: scale(1.05); 
+}
+
+.add-button:focus {
+    outline: none; 
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+form input {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+button[type="submit"] {
+    padding: 12px 20px;
+    background-color: #f75f5f; 
+    color: white;
+    border: none;
+    text-align: center; 
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #e05a42; 
+    text-align: center;
+    transform: scale(1.05); 
+}
+
+form button[type="submit"]:focus {
+    outline: none; 
+}
+
+
+.success-message {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #4CAF50; 
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
